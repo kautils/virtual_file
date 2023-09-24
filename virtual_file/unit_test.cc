@@ -1,5 +1,5 @@
 
-#ifdef TMAIN_KAUTIL_CACHE_VIRTUAL_FILE_STATIC
+#ifdef TMAIN_KAUTIL_CACHE_VIRTUAL_FILE_SHARED
 
 #include "virtual_file.h"
 #include <vector>
