@@ -5,12 +5,11 @@ include(${CMAKE_BINARY_DIR}/CMakeKautilHeader.cmake)
 git_clone(https://raw.githubusercontent.com/kautils/CMakeLibrarytemplate/v0.0.1/CMakeLibrarytemplate.cmake)
 git_clone(https://raw.githubusercontent.com/kautils/CMakeFetchKautilModule/v0.0.1/CMakeFetchKautilModule.cmake)
 
-
 CMakeFetchKautilModule(c11_string_allocator
         GIT https://github.com/kautils/cache.git
         REMOTE origin
         TAG v0.0.1
-        CMAKE_CONFIGURE_MACRO CMAKE_CXX_FLAGS="-std=c++23 -O2"
+        CMAKE_CONFIGURE_MACRO -DCMAKE_CXX_STANDARD=23 -DCMAKE_CXX_FLAGS="-O2"
         CMAKE_BUILD_OPTION -j ${number_thread}
         )
 find_package(KautilCache.0.0.1.static REQUIRED)
