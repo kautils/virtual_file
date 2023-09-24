@@ -23,7 +23,7 @@ set(${module_name}_common_pref
     MODULE_NAME ${module_name}
     INCLUDES $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}> $<INSTALL_INTERFACE:include> ${CMAKE_CURRENT_LIST_DIR} 
     SOURCES ${srcs}
-    # LINK_LIBS 
+    LINK_LIBS kautil::cache::0.0.1::static
     EXPORT_NAME_PREFIX ${PROJECT_NAME}
     EXPORT_VERSION ${PROJECT_VERSION}
     EXPORT_VERSION_COMPATIBILITY AnyNewerVersion
@@ -34,8 +34,9 @@ set(${module_name}_common_pref
 )
 
 CMakeLibraryTemplate(${module_name} EXPORT_LIB_TYPE static ${${module_name}_common_pref} )
-target_link_libraries(${${module_name}_static} PRIVATE kautil::cache::0.0.1::static)
-#CMakeLibraryTemplate(${module_name} EXPORT_LIB_TYPE shared ${${module_name}_common_pref} )
+set_target_properties(${${module_name}_static} PROPERTIES INTERFACE_LINK_LIBRARIES "")
+
+
 
 set(__t ${${module_name}_static_tmain})
 add_executable(${__t})
