@@ -28,7 +28,7 @@ set(${module_name}_common_pref
     EXPORT_VERSION ${PROJECT_VERSION}
     EXPORT_VERSION_COMPATIBILITY AnyNewerVersion
         
-    DESTINATION_INCLUDE_DIR include/kautil
+    DESTINATION_INCLUDE_DIR include/kautil/cache
     DESTINATION_CMAKE_DIR cmake
     DESTINATION_LIB_DIR lib
 )
