@@ -5,7 +5,7 @@ include(${CMAKE_BINARY_DIR}/CMakeKautilHeader.cmake)
 git_clone(https://raw.githubusercontent.com/kautils/CMakeLibrarytemplate/v0.0.1/CMakeLibrarytemplate.cmake)
 git_clone(https://raw.githubusercontent.com/kautils/CMakeFetchKautilModule/v0.0.1/CMakeFetchKautilModule.cmake)
 
-CMakeFetchKautilModule(c11_string_allocator
+CMakeFetchKautilModule(cache
         GIT https://github.com/kautils/cache.git
         REMOTE origin
         TAG v0.0.1
