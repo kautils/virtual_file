@@ -23,7 +23,7 @@ set(${module_name}_common_pref
     MODULE_NAME ${module_name}
     INCLUDES $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}> $<INSTALL_INTERFACE:include> ${CMAKE_CURRENT_LIST_DIR} 
     SOURCES ${srcs}
-    LINK_LIBS kautil::cache::0.0.1::static
+#    LINK_LIBS kautil::cache::0.0.1::static
     EXPORT_NAME_PREFIX ${PROJECT_NAME}
     EXPORT_VERSION ${PROJECT_VERSION}
     EXPORT_VERSION_COMPATIBILITY AnyNewerVersion
@@ -33,13 +33,13 @@ set(${module_name}_common_pref
     DESTINATION_LIB_DIR lib
 )
 
-CMakeLibraryTemplate(${module_name} EXPORT_LIB_TYPE static ${${module_name}_common_pref} )
-set_target_properties(${${module_name}_static} PROPERTIES INTERFACE_LINK_LIBRARIES "")
+
+CMakeLibraryTemplate(${module_name} EXPORT_LIB_TYPE shared ${${module_name}_common_pref} )
+target_link_libraries(${${module_name}_shared} PRIVATE kautil::cache::0.0.1::static)
 
 
-
-set(__t ${${module_name}_static_tmain})
+set(__t ${${module_name}_shared_tmain})
 add_executable(${__t})
 target_sources(${__t} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/unit_test.cc)
-target_link_libraries(${__t} PRIVATE ${${module_name}_static})
-target_compile_definitions(${__t} PRIVATE ${${module_name}_static_tmain_ppcs})
+target_link_libraries(${__t} PRIVATE ${${module_name}_shared})
+target_compile_definitions(${__t} PRIVATE ${${module_name}_shared_tmain_ppcs})
